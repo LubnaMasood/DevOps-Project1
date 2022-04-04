@@ -3,7 +3,7 @@
 ## Contents
 
 * [Objective](#objective)
-* [CRUD functionality within the app](#CRUD-functionality-within-the-app)
+* [CRUD Functionality Within the App](#CRUD-functionality-within-the-app)
 * [Trello Board](#Trello-Board)
 * [ERD](#Entity-Relation-Diagram)
 * [Risk Assessment](#Risk-Assessment)
