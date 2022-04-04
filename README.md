@@ -17,7 +17,7 @@
 
 ## Objective
 
-The objective of this project is to create a CRUD application with utilisation of supporting tools, methodologies and technologies that captures all core modules covered during the DevOps training.
+This project aims to create a CRUD application with utilisation of supporting tools, methodologies and technologies that capture all core modules covered during the DevOps training.
 
 
 ## CRUD Functionaility Within the App
