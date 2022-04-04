@@ -1,4 +1,4 @@
-# Fundemental Project 
+# Fundamental Project 
 
 ## Contents
 
@@ -7,7 +7,6 @@
 * [Trello Board](#Trello-Board)
 * [ERD](#Entity-Relation-Diagram)
 * [Risk Assessment](#Risk-Assessment)
-* [CRUD within the application](#CRUD-within-the-application)
 * [Front End](#Front-End)
 * [Testing & Automation](#Testing-&-Automation)
 * [Future Improvements](#Future-Improvements)
