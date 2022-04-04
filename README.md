@@ -17,7 +17,7 @@
 
 ## Objective
 
-This project aims to create a CRUD application with utilisation of supporting tools, methodologies and technologies that capture all core modules covered during the DevOps training.
+This project aims to create a CRUD application with utilisation of supporting tools, methodologies and technologies that capture all core modules covered during the QA DevOps training.
 
 
 ## CRUD Functionaility Within the App
