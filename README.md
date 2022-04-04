@@ -35,7 +35,7 @@ This project aims to create a CRUD application with utilisation of supporting to
 Below you can find my detailed risk assessment, which provides a comprehensive evaluation of the perceived risks associated with the success and failure of this project. 
 
 
-Note: _The dark blue rows indicate risks discovered and subsequently added as the project developed._ 
+_Note: The dark blue rows indicate risks discovered and subsequently added as the project developed._ 
 
 ## Front End
 
