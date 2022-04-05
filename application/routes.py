@@ -18,7 +18,7 @@ def signup():
 
 @app.route('/placeorder', methods = ['GET', 'POST'])
 def placeorder():
-    new_order = Customer_order(name="Order Placed!")
+    new_order = Customer(name="Order Placed!")
     db.session.add(new_order)
     db.session.commit()
     return "Added your order into the system!"
