@@ -1,6 +1,4 @@
 from app import db 
-from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, NumericField, DateTimeField
 
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
