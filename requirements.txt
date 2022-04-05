@@ -1,7 +1,9 @@
 Flask
-Flask_sqlalchemy
+Flask-SQLAlchemy
 Flask-WTF
 PyMySQL
 Jinja2
 SQLAlchemy
 WTForms
+MarkupSafe
+itsdangerous
