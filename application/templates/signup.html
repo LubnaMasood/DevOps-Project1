@@ -1,0 +1,41 @@
+{% extends 'homepage.html' %}
+
+{% block title %}
+<title>Sign Up!</title>
+{% endblock %}
+
+{% block content %}
+<h1> Sign Up Here!</h1>
+<br>
+Enter your information
+<form method='POST' action=''>
+
+    <p>
+        {{form.first_name.label}} <br>
+        {{form.first_name(size=35)}}
+    </p>
+        {{form.last_name.label}} <br>
+        {{form.last_name(size=35)}}
+    </p>
+    <p>
+        {{form.email.label}} <br>
+        {{form.email(size=35)}}
+    </p>
+    <p>
+        {{form.phonenumber.label}} <br>
+        {{form.phonenumber(size=35)}}
+    </p>
+    <p>
+        {{form.username.label}} <br>
+        {{form.username(size=35)}}
+    </p>
+    <p>
+        {{form.password.label}} <br>
+        {{form.password(size=35)}}
+    </p>
+    <p> {{form.submit()}} <p>
+</form>
+
+{% endblock body_content %}
+</body>
+</html>

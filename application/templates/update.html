@@ -1,0 +1,24 @@
+{% extends 'homepage.html' %}
+
+{% block body_content %}
+
+<h2> Update Your Info!</h2>
+<br>
+<form action="" method='POST'>
+    <p>
+        {{form.old_email.label}} <br>
+        {{form.old_email(size=35)}}
+    </p>
+    <p>
+        {{form.new_email.label}} <br>
+        {{form.new_email(size=35)}}
+    </p>
+    <p> {{form.submit()}} <p>
+</form>
+{% if form.old_email.data and form.new_email.data %}
+    <p> Your Email has been Updated!</p>
+{% endif %}
+
+{% endblock body_content %}
+</body>
+</html>
