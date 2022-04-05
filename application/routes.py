@@ -16,13 +16,6 @@ def signup():
     db.session.commit()
     return "Added new customer to the database!"
 
-@app.route('/placeorder', methods = ['GET', 'POST'])
-def placeorder():
-    new_order = Customer(name="Order Placed!")
-    db.session.add(new_order)
-    db.session.commit()
-    return "Added your order into the system!"
-
 @app.route('/vieworder', methods = ['GET', 'POST'])
 def vieworder():
     view_order = Customer_order(name="There are no orders to view!")
