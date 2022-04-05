@@ -1,4 +1,6 @@
 from app import db 
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, NumericField, DateTimeField
 
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -6,16 +8,13 @@ class Customer(db.Model):
     last_name = db.Column(db.String(35), nullable=False)
     email = db.Column(db.String(40), unique=True)
     phone_number = db.Column(db.Integer())
+    username = db.Column(db.String(35), unique = True)
+    password = db.Column(db.String(35))
+    customer_order = db.relationship('customer_order', backref='customerbr')
 
-class Customer_orders(db.Model):
+class Customer_order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer())
-    product_id = db.Column(db.Integer())
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
     date_placed = db.Column(db.DateTime)
     order_status = db.Column(db.String(35), nullable=False)
-    
-class Makeup_Products(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(45), nullable=False)
-    price = db.Column(db.Numeric)
-    stock = db.Column(db.Integer())
+    customer = db.relationship('Customer', backref='customerorderrbr')
