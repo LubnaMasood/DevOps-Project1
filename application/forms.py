@@ -1,16 +1,16 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, EmailField
-from wtforms.validators import data_required
+from wtforms import StringField, SubmitField, DateField, EmailField, IntegerField, SelectField
+from wtforms.validators import DataRequired, Length, ValidationError
 
 
 class SignUpForm(FlaskForm):
-    first_name = StringField("First Name: ", validators=[data_required()])
-    last_name = StringField("Last Name: ", validators=[data_required()])
-    email = StringField("Email: ", validators=[data_required()])
-    phone_number = IntegerField("Phone Number: ", validators=[data_required()])
-    username = StringField("Username: ", validators=[data_required()])
-    password = PasswordField("Password: ", validators=[data_required()])
-    submit = SubmitField('Submit')
+    first_name = StringField("First Name: ", validators=[DataRequired()])
+    last_name = StringField("Last Name: ", validators=[DataRequired()])
+    email = StringField("Email: ", validators=[DataRequired()])
+    phone_number = IntegerField("Phone Number: ", validators=[DataRequired()])
+    username = StringField("Username: ", validators=[DataRequired()])
+    password = PasswordField("Password: ", validators=[DataRequired()])
+    submit = SubmitField('Sign Up!')
 
 class ViewOrderForm(FlaskForm):
     username = StringField("Username: ", validators=[data_required()])

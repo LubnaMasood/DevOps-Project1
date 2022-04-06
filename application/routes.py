@@ -20,36 +20,43 @@ def signup():
     if form.validate_on_submit():
         first_name = form.first_name.data
         last_name = form.last_name.data
-         email = form.email.data
-         phone_number = form.phone_number.data
-         username = form.username.data
-         password = form.password.data
-         customer = Customer(first_name=first_name,last_name=last_name,email=email,phone_number=phone_number,username=username,password=password)
-         db.session.add(customer)
-         db.session.commit()
+        email = form.email.data
+        phone_number = form.phone_number.data
+        username = form.username.data
+        password = form.password.data
+        customer = Customer(first_name=first_name,last_name=last_name,email=email,phone_number=phone_number,username=username,password=password)
+        db.session.add(customer)
+        db.session.commit()
 
     return redirect(url_for('home'))
     else:
-        return render_template('signup.html', form = form)
+        return render_template('signup.html', form=form)
 
 
 @app.route('/vieworder', methods = ['GET', 'POST'])
 def vieworder():
-    view_order = Customer_order(name="There are no orders to view!")
-    db.session.add(view_order)
-    db.session.commit()
-    return "Place an order to view your orders!"
+    return render_template('vieworder.html')
 
 @app.route('/update', methods = ['GET', 'POST'])
 def update():
-    update = Customer(name="Update your information!")
-    db.session.add(update)
-    db.session.commit()
-    return "Your information has been updated!"
+    form = UpdateForm()
+    customer = Customer.query.get(customer_id)
+    if form.validate_on_submit():
+        email = form.new_email.data
+        if email:
+            customer.email=email
+        db.session.commit()
+        return redirect(url_for('home'))
+    else:
+        return render_template('update.html', form=form)
 
-@app.route('/delete', methods = ['GET', 'POST'])
-def delete():
-    delete = Customer(name="Delete your information!")
-    db.session.add(delete)
+
+@app.route('/delete')
+def delete(username=None):
+    if username == None:
+        return "No Username Found!"
+    else: 
+        customer=Customer.query.get(customer_id)
+    db.session.delete(customer)
     db.session.commit()
-    return "Your information has been deleted!"
+    return render_template('homepage.html)
