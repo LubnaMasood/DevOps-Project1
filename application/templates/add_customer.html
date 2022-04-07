@@ -1,41 +1,16 @@
-{% extends 'homepage.html' %}
+{% extends 'navbar.html' %}
 
 {% block body %}
 <title>Sign Up Here!</title>
-{% endblock %}
-
-{% block body %}
-<h1> Enter your information</h1>
-<br>
-<div class = 'form'>
 <form method='POST' action=''>
     {{ form.hidden_tag() }}
-    <br>
-        {{form.first_name.label}} <br>
-        {{form.first_name(size=35)}}
-    </p>
-        {{form.last_name.label}} <br>
-        {{form.last_name(size=35)}}
-    </p>
-    <p>
-        {{form.email.label}} <br>
-        {{form.email(size=35)}}
-    </p>
-    <p>
-        {{form.phonenumber.label}} <br>
-        {{form.phonenumber(size=35)}}
-    </p>
-    <p>
-        {{form.username.label}} <br>
-        {{form.username(size=35)}}
-    </p>
-    <p>
-        {{form.password.label}} <br>
-        {{form.password(size=35)}}
-    </p>
-    <p> {{form.submit()}} <p>
+    {{form.first_name.label}} {{form.first_name(size=35)}}
+    {{form.last_name.label}} {{form.last_name(size=35)}}
+    {{form.email.label}} {{form.email(size=35)}}
+    {{form.phonenumber.label}} {{form.phonenumber(size=35)}}
+    {{form.username.label}} {{form.username(size=35)}}
+    {{form.password.label}} {{form.password(size=35)}}
+    {{form.submit()}} 
 </form>
 
-{% endblock body %}
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'navbar.html' %}
+{% block title %}
+{% endblock %}
+
+{% block body %}
+<h2> Update Customer</h2>
+{% for Customer in update_customer %}
+    <br>{{customer.first_name}}  {{customer.last_name}} {{customer.email}} 
+
+    <br>{{customer.phone_number}} {{customer.username}} {{customer.password}} <a href="{{ url_for('update_customer', customer_id = customer.id) }}"><button type="button">Update</button></a><a href="{{ url_for('delete_customer', customer_id = customer.id) }}"><button type="button">Delete</button></a> </p><br>
+{% endfor %}
+{% endblock %}

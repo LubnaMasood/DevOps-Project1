@@ -1,30 +1,17 @@
-{% extends 'homepage.html' %}
+{% extends 'navbar.html' %}
 {% block body %}
 <title>Update Your Info!</title>
 {% endblock %}
 
 {% block body %}
-<h1> Enter your information</h1>
-<br>
-<div class = 'form'>
-<form method='POST' action=''>
-    {{ form.hidden_tag() }}
-</br>
-<h2>Update Your Email</h2>
-    <br>
-        {{form.old_email.label}} <br>
-        {{form.old_email(size=35)}}
-    </p>
-    <p>
-        {{form.new_email.label}} <br>
-        {{form.new_email(size=35)}}
-    </p>
-    <p> {{form.submit()}} <p>
+    <form action="{{ url_for('update_customer', customer_id=customer.customer_id) }}" method="POST">
+        {{ form.hidden_tag() }}
+        {{form.first_name.label}} {{form.first_name(size=35)}}
+        {{form.last_name.label}} {{form.last_name(size=35)}}
+        {{form.email.label}} {{form.email(size=35)}}
+        {{form.phonenumber.label}} {{form.phonenumber(size=35)}}
+        {{form.username.label}} {{form.username(size=35)}}
+        {{form.password.label}} {{form.password(size=35)}}
+        {{ form.submit }}
 </form>
-{% if form.old_email.data and form.new_email.data %}
-    <p> Your Email has been Updated!</p>
-{% endif %}
-
-{% endblock body_content %}
-</body>
-</html>
+{% endblock %}
