@@ -1,16 +1,16 @@
 {% extends 'homepage.html' %}
 
-{% block title %}
-<title>Sign Up!</title>
+{% block body %}
+<title>Sign Up Here!</title>
 {% endblock %}
 
-{% block content %}
-<h1> Sign Up Here!</h1>
+{% block body %}
+<h1> Enter your information</h1>
 <br>
-Enter your information
+<div class = 'form'>
 <form method='POST' action=''>
-
-    <p>
+    {{ form.hidden_tag() }}
+    <br>
         {{form.first_name.label}} <br>
         {{form.first_name(size=35)}}
     </p>
@@ -36,6 +36,6 @@ Enter your information
     <p> {{form.submit()}} <p>
 </form>
 
-{% endblock body_content %}
+{% endblock body %}
 </body>
 </html>

@@ -1,11 +1,17 @@
 {% extends 'homepage.html' %}
+{% block body %}
+<title>Update Your Info!</title>
+{% endblock %}
 
-{% block body_content %}
-
-<h2> Update Your Info!</h2>
+{% block body %}
+<h1> Enter your information</h1>
 <br>
-<form action="" method='POST'>
-    <p>
+<div class = 'form'>
+<form method='POST' action=''>
+    {{ form.hidden_tag() }}
+</br>
+<h2>Update Your Email</h2>
+    <br>
         {{form.old_email.label}} <br>
         {{form.old_email(size=35)}}
     </p>
