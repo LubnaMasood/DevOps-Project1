@@ -1,5 +1,54 @@
 {% extends 'navbar.html'%}
 
-{% block title %}
-<title>Welcome To The Home Page!</title>
-{% endblock %}
+{% block body %}
+<h2>View Customers</h2>
+{% for customer in all_customers %}
+    <br><br>
+    First Name: 
+    {{ customer.first_name }}
+    <br><br>
+    Last Name: 
+    {{ customer.last_name }}
+    <br><br>
+    Email: 
+    {{ customer.email }}
+    <br><br>
+    PhoneNumber: 
+    {{ customer.phone_number }}
+    <br><br>
+    UserName: 
+    {{ customer.username }}
+    <br><br>
+    Password: 
+    {{ customer.password }}
+    <br>
+    <form action="{{ url_for('update', id = customer.id) }}"></form>
+        <input type=submit value="Update">
+    </form>
+    <form action="{{ url_for('delete', id = customer.id) }}">
+        <input type=submit value="Delete">
+    </form>
+    <br><br>
+    {% endfor %}
+
+    <h2>View Customer Orders</h2>
+    {% for order in all_orders %}
+        <br><br>
+        Order ID: 
+        {{ order.id }}
+        <br><br>
+        Date Placed: 
+        {{ order.date_placed }}
+        <br><br>
+        Order Status: 
+        {{ order.order_status }}
+        <br>
+        <form action="{{ url_for('updateorder', id = customer.id) }}">
+            <input type=submit value="Update">
+        </form>
+        <form action="{{ url_for('deletecustomer', id = customer.id) }}">
+            <input type=submit value="Delete">
+        </form>
+        <br><br>
+        {% endfor %}
+        {% endblock body %}

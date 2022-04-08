@@ -1,69 +1,98 @@
 from application import app, db
-from flask import render_template, url_for, request, redirect
 from application.models import Customer, Customer_order
 from application.forms import CustomerForm, Customer_orderForm
+from flask import render_template, url_for, request, redirect
 
 
-@app.route('/homepage', methods=['GET', 'POST'])
+@app.route('/')
+@app.route('/homepage')
 def homepage():
-    return render_template('homepage.html', message="Homepage")
+    all_customers = Customer.query.all()
+    all_orders = Customer_order.query.all()
+    return render_template('homepage.html', all_customers=all_customers, all_orders=all_orders)
 
-@app.route('/add_customer', methods = ['GET', 'POST'])
-def add_customer():
+@app.route('/create_customer', methods = ['GET', 'POST'])
+def create_customer():
     form = CustomerForm()
-    if form.validate_on_submit():
-        new_customer = Customer(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, phone_number=form.phone_number.data, username=form.username.data, password=form.password.data)
-        db.session.add(new_customer)
-        db.session.commit()
-        return redirect(url_for('add_customer', message="New Customer Added!" ))
-    else:
-        return render_template('add_customer.html', form=form)
-
-@app.route('/delete_order/<int:order_id>', methods=['GET', 'POST'])
-def delete_order(order_id):
-    delete_order = db.session.query(Customer).filter_by(order_id=order_id).first()
-    if deleted_order:
-        db.session.delete(delete_order)
-        db.session.commit()
-        return redirect(url_for('vieworder'))
-
-@app.route('/delete_customer/<int:customer_id>', methods=['GET', 'POST'])
-def delete_customer(customer_id):
-    delete_customer = db.session.query(Customer).filter_by(customer_id=customer_id).first()
-    if customer:
-        db.session.delete(delete_customer)
-        db.session.commit()
-        return redirect(url_for('viewcustomer'))
-
-@app.route('/update_customer/<int:customer_id>', methods =['GET', 'POST'])
-def update_customer(customer_id):
-    update_customer = db.session.query(Customer).filter_by(customer_id=customer_id).first()
-    if update_customer:
-            update_customer.first_name = request.form ['First name']
-            update_customer.last_name = request.form ['Last name']
-            update_customer.email = request.form ['Email']
-            update_customer.phone_number = request.form ['Phone Number']
-            update_customer.username = request.form ['Username']
-            update_customer.password = request.form ['Password']
+    if request.method == "POST":
+        if form.validate_on_submit():
+            new_customer = Customer(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, phone_number=form.phone_number.data, username=form.username.data, password=form.password.data)
+            db.session.add(new_customer)
             db.session.commit()
-        return redirect(url_for('viewcustomer', message="Customer Info Updated!"))
-    else:
-        return render_template('homepage.html', form=form, customer_id=customer_id)
+        return redirect(url_for("create_customer"))
 
 
-@app.route('/update_order/<int:order_id>', methods =['GET', 'POST'])
-def update_order(order_id):
-    update_order = db.session.query(Customer_order).filter_by(order_id=order_id).first()
-    if request.method == 'POST':
-        order = Customer_order.query.filter_by(order_id=order_id).first()
-        if update_order:
-            update_customer.order_id = request.form ['Order ID']
-            update_customer.username = request.form ['Username']
-            update_customer.password = request.form ['Password']
+@app.route('/create', methods = ['GET', 'POST'])
+def create():
+    form = CustomerForm()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            first_name = form.first_name.data
+            last_name = form.last_name.data
+            email = form.email.data
+            phone_number = form.phone_number.data
+            username = form.username.data
+            password = form.password.data
+            customer = Customer(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, phone_number=form.phone_number.data, username=form.username.data, password=form.password.data)
+            db.session.add(customer)
             db.session.commit()
-        return redirect(url_for('vieworder', message="Customer Info Updated!"))
-    else:
-        return render_template('homepage.html', form=form, order_id=order_id)
+            return redirect(url_for('homepage', message="New Customer Added!"))
+        else:
+            return render_template('add.html', title="Create Customer", form = form)
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    else:
+        return render_template('add.html', title="Create Customer", form = form)
+
+@app.route('/addorder', methods=["GET", "POST"])
+def addorder():
+    form = Customer_orderForm()
+    all_orders = Customer_order.query.all()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            new_order = Customer_order(id=form.id.data, date_placed=form.date_placed.data, order_status=form.order_status.data)
+            db.session.add(new_order)
+            db.session.commit()
+            return  redirect(url_for("homepage"))
+        else:
+            return render_template('add_order.html', title="Add Order", form = form)
+    else:
+            return render_template('add_order.html', title="Add Order", form = form)
+
+@app.route("/update/<int:id>", methods=["GET", "POST"])
+def update(id):
+    form = CustomerForm()
+    customer = Customer.query.filter_by(id=id).first()
+    if request.method == "POST":
+        customer.email = form.email.data
+        customer.username = form.username.data
+        db.session.commit()
+        return  redirect(url_for("homepage"))
+    else:
+        return render_template("update.html", form=form, title="Update Customer", customer=customer)
+
+@app.route("/updateorder/<int:id>", methods=["GET", "POST"])
+def updateorder(id):
+    form = Customer_orderForm()
+    order = Customer_order.query.filter_by(id=id).first()
+    if request.method == "POST":
+        order.date_placed = form.date_placed.data
+        order.order_status = form.order_status.data
+        db.session.commit()
+        return  redirect(url_for("homepage"))
+    else:
+        return render_template("updateorder.html", form=form, title="Update Order", order=order)
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    order = Customer_order.query.filter_by(id=id).first()
+    db.session.delete(order)
+    db.session.commit()
+    return redirect(url_for("homepage", message="Order Deleted!"))
+
+@app.route("/deletecustomer/<int:id>")
+def deletecustomer(id):
+    customer = Customer.query.filter_by(id=id).first()
+    db.session.delete(customer)
+    db.session.commit()
+    return redirect(url_for("homepage", message="Customer Deleted!" ))
+  
