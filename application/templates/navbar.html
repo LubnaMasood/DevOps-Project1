@@ -1,13 +1,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome! {{ title }}</title>
-</head>
-<body>
-    <h1>Sign up and Track your Orders! {{ title }}</h1>
+<body style="background-color:lightblue"></body>
+<h1>Sign up & Track your Orders! {{ title }}</h1>
         <a href="{{ url_for('homepage') }}">Home</a>
-        <a href="{{ url_for('create') }}">Create Customer </a>
-        <a href="{{ url_for('addorder') }}">Add Order</a>
+        <br><br>
+        <a href="{{ url_for('create') }}"> Create Customer </a>
+        <br><br>
+        <a href="{{ url_for('addorder') }}"> Add Order To Track</a>
         {% block body %}
         {% endblock body%}
     </body>

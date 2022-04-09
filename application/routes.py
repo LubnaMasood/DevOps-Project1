@@ -63,8 +63,12 @@ def update(id):
     form = CustomerForm()
     customer = Customer.query.filter_by(id=id).first()
     if request.method == "POST":
+        customer.first_name = form.first_name.data
+        customer.last_name = form.last_name.data
         customer.email = form.email.data
+        customer.phone_number = form.phone_number.data
         customer.username = form.username.data
+        customer.password = form.password.data 
         db.session.commit()
         return  redirect(url_for("homepage"))
     else:
@@ -85,14 +89,19 @@ def updateorder(id):
 @app.route("/delete/<int:id>")
 def delete(id):
     order = Customer_order.query.filter_by(id=id).first()
-    db.session.delete(order)
-    db.session.commit()
-    return redirect(url_for("homepage", message="Order Deleted!"))
+    if delete:
+        db.session.delete(order)
+        db.session.commit()
+        return redirect(url_for('homepage'))
+    else: 
+        return render_template('homepage.html', message="Order Deleted!")
 
 @app.route("/deletecustomer/<int:id>")
 def deletecustomer(id):
     customer = Customer.query.filter_by(id=id).first()
-    db.session.delete(customer)
-    db.session.commit()
-    return redirect(url_for("homepage", message="Customer Deleted!" ))
-  
+    if customer:
+        db.session.delete(customer)
+        db.session.commit()
+        return redirect(url_for("homepage"))
+    else:
+        return render_template("homepage.html", message="Customer Deleted!")

@@ -4,8 +4,6 @@
 <title>Click to Order!</title>
 <form method='POST' action=''>
     {{ form.hidden_tag() }}
-    {{ form.id.label }} {{ form.id(size=35) }}
-    <br><br>
     {{ form.date_placed.label }} {{ form.date_placed(size=35) }}
     <br><br>
     {{ form.order_status.label }} {{ form.order_status(size=35) }}

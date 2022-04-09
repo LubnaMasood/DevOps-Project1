@@ -22,20 +22,16 @@
     Password: 
     {{ customer.password }}
     <br>
-    <form action="{{ url_for('update', id = customer.id) }}"></form>
-        <input type=submit value="Update">
-    </form>
-    <form action="{{ url_for('delete', id = customer.id) }}">
-        <input type=submit value="Delete">
-    </form>
+    <a href="{{ url_for('update', id = customer.id) }}">
+        <button> Update Customer </button></a>
+    <br><br>
+    <a href="{{ url_for('deletecustomer', id = customer.id) }}">
+        <button> Delete Customer </button> </a>
     <br><br>
     {% endfor %}
 
     <h2>View Customer Orders</h2>
     {% for order in all_orders %}
-        <br><br>
-        Order ID: 
-        {{ order.id }}
         <br><br>
         Date Placed: 
         {{ order.date_placed }}
@@ -43,12 +39,11 @@
         Order Status: 
         {{ order.order_status }}
         <br>
-        <form action="{{ url_for('updateorder', id = customer.id) }}">
-            <input type=submit value="Update">
-        </form>
-        <form action="{{ url_for('deletecustomer', id = customer.id) }}">
-            <input type=submit value="Delete">
-        </form>
+        <a href="{{ url_for('updateorder', id = order.id) }}">
+            <button> Update Order </button></a>
+        <br><br>
+        <a href="{{ url_for('delete', id= order.id) }}">
+            <button> Delete Customer</button></a>
         <br><br>
         {% endfor %}
         {% endblock body %}
