@@ -22,12 +22,24 @@ This project aims to create a CRUD application with utilisation of supporting to
 
 ## CRUD Functionaility Within the App
 
+The CRUD functionality of this app will include: 
 
+* CREATE\
+  -Add Customers\
+  -Add Orders
+  
+* READ\
+  -View Customers\
+  -View Customer Orders
+ 
 
 ## Trello Board
 
 
+
 ## Entity Relation Diagram 
+
+
 
 
 ## Risk Assessment 
