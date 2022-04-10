@@ -29,8 +29,16 @@ The CRUD functionality of this app will include:
   -Add Orders
   
 * READ\
-  -View Customers\
-  -View Customer Orders
+  -View all Customers\
+  -View all Customer Orders
+  
+ * UPDATE\
+  -Update Customers\
+  -Edit Customer Orders
+  
+  * DELETE\
+  -Delete Customers\
+  -Delete Customer Orders
  
 
 ## Trello Board
@@ -39,8 +47,10 @@ The CRUD functionality of this app will include:
 
 ## Entity Relation Diagram 
 
+A simple entity-relationship diagram (ERD) was constructed to showcase the relationship I expected these entities to have. The database consists of a one-to-many relationship; my initial design looked like this:
 
 
+As the project progressed, the design also changed during the development process. The first modification occurred when I realised that the attribute 'product_id' was unnecessary to the diagram- consequently, it was removed. Additional attributes (username and password) were also included in the model. However, the most noticeable change to the final model occurred when the date_placed attribute in the customer's orders table was changed from Integer to DateTime.
 
 ## Risk Assessment 
 
@@ -50,6 +60,11 @@ Below you can find my detailed risk assessment, which provides a comprehensive e
 _Note: The dark blue rows indicate risks discovered and subsequently added as the project developed._ 
 
 ## Front End
+
+The entry point for this app is the homepage, navigated to with the '/' url suffix. When a user enters the website, they are greeted with the following homepage: 
+
+
+The homepage displays the current Customers and Orders on the website,  
 
 
 ## Testing & Automation
