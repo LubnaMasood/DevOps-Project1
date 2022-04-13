@@ -21,7 +21,6 @@ def create_customer():
             db.session.commit()
         return redirect(url_for("create_customer"))
 
-
 @app.route('/create', methods = ['GET', 'POST'])
 def create():
     form = CustomerForm()
@@ -39,7 +38,6 @@ def create():
             return redirect(url_for('homepage', message="New Customer Added!"))
         else:
             return render_template('add.html', title="Create Customer", form = form)
-
     else:
         return render_template('add.html', title="Create Customer", form = form)
 

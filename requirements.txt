@@ -8,3 +8,5 @@ WTForms
 MarkupSafe
 itsdangerous
 Werkzeug
+pytest
+pytest-cov

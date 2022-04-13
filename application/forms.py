@@ -11,7 +11,7 @@ class CustomerForm(FlaskForm):
     phone_number = StringField("PhoneNumber: ", validators=[DataRequired(), Length(max=35)])
     username = StringField("Username: ", validators=[DataRequired(), Length(max=35)])
     password = PasswordField("Password: ", validators=[DataRequired(), Length(max=35)])
-    submit = SubmitField('Sign Up!')
+    submit = SubmitField('Add Customer!')
 
 class Customer_orderForm(FlaskForm):
     id = IntegerField("Order ID: ", validators=[DataRequired(), NumberRange(min=1, max=5)])
