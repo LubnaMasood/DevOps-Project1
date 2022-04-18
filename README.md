@@ -51,7 +51,7 @@ The Trello Board for this project can be broken down into the following categori
 <img width="1440" alt="Trello Board" src="https://user-images.githubusercontent.com/101265654/162663591-64545b9f-dc43-4963-a094-13d7d339d796.png">
 
 * Project Resources: All things that are necessary for the project to be completed 
-* User Stories: User Stories: User stories are statements that exist to demonstrate the functionality of the application. Putting them into stories allows me to follow a step-by-step procedure in creating these functionalities.
+* User Stories: User stories are statements that exist to demonstrate the functionality of the application. Putting them into stories allows me to follow a step-by-step procedure in creating these functionalities.
 * Backlog: Are outstanding tasks that need to be completed for the completion of the project.
 * In Progress: Are tasks that are currently being worked on and developed.  
 * Done: The tasks that have been completed and added to the project. 
@@ -137,6 +137,8 @@ Once the customer and order was delete from the app the order table had one less
 
 
 ## Testing & Automation
+
+
 
 
 ## Future Improvements
