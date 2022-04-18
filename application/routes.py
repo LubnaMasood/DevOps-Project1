@@ -1,10 +1,10 @@
 from application import app, db
+from flask.templating import render_template
 from application.models import Customer, Customer_order
+from datetime import datetime, timedelta
 from application.forms import CustomerForm, Customer_orderForm
-from flask import render_template, url_for, request, redirect
+from flask import url_for, request, redirect
 
-
-@app.route('/')
 @app.route('/homepage')
 def homepage():
     all_customers = Customer.query.all()
@@ -20,7 +20,9 @@ def create_customer():
             db.session.add(new_customer)
             db.session.commit()
         return redirect(url_for("create_customer"))
-
+    else:
+        return redirect(url_for("create_customer"))
+ 
 @app.route('/create', methods = ['GET', 'POST'])
 def create():
     form = CustomerForm()

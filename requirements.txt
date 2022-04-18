@@ -10,3 +10,4 @@ itsdangerous
 Werkzeug
 pytest
 pytest-cov
+flask_testing
