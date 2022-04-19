@@ -138,7 +138,19 @@ Once the customer and order was delete from the app the order table had one less
 
 ## Testing & Automation
 
+This app comprises of unit tests designed to test each aspect of the app’s functionality. The test coverage of these functions is 81% which can be seen in the image below:
 
+<img width="883" alt="Screenshot 2022-04-19 at 2 56 10 am" src="https://user-images.githubusercontent.com/101265654/163904831-117c9969-117a-4658-9508-961ba866f5ca.png">
+
+The Code for the tests are: 
+
+<img width="1077" alt="Screenshot 2022-04-19 at 2 57 55 am" src="https://user-images.githubusercontent.com/101265654/163905047-fcc8e59f-f96b-486e-af37-cbcf7ffc8be3.png">
+
+<img width="422" alt="Screenshot 2022-04-19 at 2 59 17 am" src="https://user-images.githubusercontent.com/101265654/163905151-cc592aa0-9121-4570-970b-9a61c13aa47d.png">
+
+To automate the process Jenkins has been installed and can be used to run the tests on the latest build pushed to GitHub:
+
+<img width="1167" alt="Screenshot 2022-04-19 at 3 01 53 am" src="https://user-images.githubusercontent.com/101265654/163905373-b2a05fda-c11a-4df1-bc21-c1a9b12f066d.png">
 
 
 ## Future Improvements
